@@ -57,7 +57,7 @@ gnn = nn.Sequential(
 
 gdefunc = GDEFunc(gnn)
 
-gde = ODEBlock(odefunc=gdefunc, method='rk4', atol=1e-3, rtol=1e-4, adjoint=False).to(device)
+gde = ODEBlock(odefunc=gdefunc, method='dopri5', atol=1e-3, rtol=1e-4, adjoint=False).to(device)
 
 m = nn.Sequential(
     GCNLayer(g=g, in_feats=num_feats, out_feats=64, activation=F.relu, dropout=0.4),
